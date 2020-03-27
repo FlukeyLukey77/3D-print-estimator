@@ -8,8 +8,8 @@ const int petHourly = 8;
 const int flexHourly = 12;
 
 //Scaling Parameters
-const float timeScale = 1.1; //Power of time scaling
-const int scalingimpact = 2; 
+const float timeScalePower = 1.1; //Power of time scaling
+const int scalingImpact = 2; 
 
 //User enterable data
 int timeHours;
@@ -21,7 +21,7 @@ int warpRank;
 int rushRank;
 
 // variables
-float time;
+float actualTime;
 float standardPrice;
 float adjustedPrice;
 
@@ -51,36 +51,33 @@ int main(void){
 	
 	
 //PROCESSING
-	time = (timeHours+((float)timeMinutes/60)); //Gives time in hours
+	actualTime = (timeHours+((float)timeMinutes/60)); //Gives time in hours
+		
+	scaledTime = pow(time, timeScalePower);
 	
 	switch(Filament)
 	{
 		case 1:
-			standardPrice = pow(time, timeScale)*plaHourly;
+			standardPrice = scaledTime * plaHourly;
 		break;
 		case 2:
-			standardPrice = pow(time, timeScale
-	if(filament==1){
-		standardprice=pow(time,timescalepower)*PLAperhour;
+			standardPrice = scaledTime * absHourly;
+		break;
+		case 3:
+			standardPrice = scaledTime * petHourly;
+		break;
+		case 4:
+			standardPrice = scaledTime * flexHourly;
+		break;
+		default:
+			printf("Error, Invalid choice of filament");
 	}
-	else if(filament==2){
-		standardprice=pow(time,timescalepower)*ABSperhour;
-	}
-	else if(filament==3){
-		standardprice=pow(time,timescalepower)*PETGperhour;
-	}
-	else if(filament==4){
-		standardprice=pow(time,timescalepower)*Flexperhour;
-	}
-	else{
-		printf("filament choice error!!");
-	}
+		
+	scalingFactor= ((float)supportRank/3)+((-1+(float)overhangRank)/3)+((-1+(float)warpRank)/3)+((3-(float)rushRank)/3);
 	
-	scalingfactor= ((float)support/3)+((-1+(float)overhangrisk)/3)+((-1+(float)warprisk)/3)+((3-(float)rush)/3);
+	adjustedPrice = standardPrice*(1+(scalingFactor/scalingImpact));
 	
-	adjustedprice = standardprice*(1+(scalingfactor/scalingimpact));
-	
-	printf("Price = %f \n\n",adjustedprice);
+	printf("Price = %f \n\n",adjustedPrice);
 	
 	
 }
