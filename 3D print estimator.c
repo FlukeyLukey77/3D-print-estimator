@@ -2,33 +2,31 @@
 # include<math.h>
 
 //Material Prices (Dollars Per Hour)
-const int PLAperhour = 6;
-const int ABSperhour = 10;
-const int PETGperhour = 8;
-const int Flexperhour = 12;
+const int plaHourly = 6;
+const int absHourly = 10;
+const int petHourly = 8;
+const int flexHourly = 12;
 
 //Scaling Parameters
-const float timescalepower = 1.1;
+const float timeScale = 1.1; //Power of time scaling
 const int scalingimpact = 2; 
 
 //User enterable data
 int timeHours;
 int timeMinutes;
 int filament;
-int overhangrisk;
-int support;
-int warprisk;
-int rush;
+int overhangRank;
+int supportRank;
+int warpRank;
+int rushRank;
 
 // variables
 float time;
-float standardprice;
-float adjustedprice;
+float standardPrice;
+float adjustedPrice;
 
-float scalingfactor;
-int timescaling;
-
-
+float scalingFactor;
+int timeScaling;
 
 int main(void){
 	
@@ -43,18 +41,25 @@ int main(void){
 	printf("Enter filament, 1=PLA, 2=ABS, 3=PETG, 4=Flex:  ");
 	scanf("%d",&filament);
 	printf("Enter support material 0 to 3:  ");
-	scanf("%d",&support);
+	scanf("%d",&supportRank);
 	printf("Enter overhang risk 0 to 3:  ");
-	scanf("%d",&overhangrisk);
+	scanf("%d",&overhangRank);
 	printf("Enter warp risk 0 to 3:  ");
-	scanf("%d",&warprisk);
+	scanf("%d",&warpRank);
 	printf("Enter requested lead time in days:  ");
-	scanf("%d",&rush);
+	scanf("%d",&rushRank);
 	
 	
 //PROCESSING
 	time = (timeHours+((float)timeMinutes/60)); //Gives time in hours
 	
+	switch(Filament)
+	{
+		case 1:
+			standardPrice = pow(time, timeScale)*plaHourly;
+		break;
+		case 2:
+			standardPrice = pow(time, timeScale
 	if(filament==1){
 		standardprice=pow(time,timescalepower)*PLAperhour;
 	}
