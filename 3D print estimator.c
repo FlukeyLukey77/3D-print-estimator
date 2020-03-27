@@ -5,9 +5,9 @@
 const int PLAperhour = 6;
 const int ABSperhour = 10;
 const int PETGperhour = 8;
-const int Flexperhour = 10;
+const int Flexperhour = 12;
 
-const float timescalepower =1.1;
+const float timescalepower = 1.1;
 const int scalingimpact = 2; 
 
 //User enterable data
