@@ -1,18 +1,19 @@
 # include<stdio.h>
 # include<math.h>
 
-//Adjustments
+//Material Prices (Dollars Per Hour)
 const int PLAperhour = 6;
 const int ABSperhour = 10;
 const int PETGperhour = 8;
 const int Flexperhour = 12;
 
+//Scaling Parameters
 const float timescalepower = 1.1;
 const int scalingimpact = 2; 
 
 //User enterable data
-int timehours;
-int timeminutes;
+int timeHours;
+int timeMinutes;
 int filament;
 int overhangrisk;
 int support;
@@ -31,14 +32,14 @@ int timescaling;
 
 int main(void){
 	
-	while(1){
+	while(1){ //Keep running program infinitely until closed, needs to be changed
 	
-	//DATA ENTRY
+//DATA ENTRY
 	printf("Welcome to P3DP quoting \n");
 	printf("To get a quote you need to enter some data \n\n");
 	
-	printf("Enter print time:  ");
-	scanf("%d,%d",&timehours,&timeminutes);
+	printf("Enter print time:  "); 
+	scanf("%d,%d",&timeHours,&timeMinutes);
 	printf("Enter filament, 1=PLA, 2=ABS, 3=PETG, 4=Flex:  ");
 	scanf("%d",&filament);
 	printf("Enter support material 0 to 3:  ");
@@ -51,8 +52,8 @@ int main(void){
 	scanf("%d",&rush);
 	
 	
-	//PROCESSING
-	time = (timehours+((float)timeminutes/60));
+//PROCESSING
+	time = (timeHours+((float)timeMinutes/60)); //Gives time in hours
 	
 	if(filament==1){
 		standardprice=pow(time,timescalepower)*PLAperhour;
